@@ -27,7 +27,7 @@ public class NuoDBDataSourceProvider implements DataSourceProvider {
     public static final String DEFAULT_SERVER_NAME = "localhost";
 
     /** The default database name */
-    public static final String DEFAULT_DATABASE_NAME = "test";
+    public static final String DEFAULT_DATABASE_NAME = "high_performance_java_persistence";
 
     /** The default database schema */
     public static final String DEFAULT_SCHEMA_NAME = "user";
