@@ -35,7 +35,7 @@ public abstract class AbstractPhenomenaTest extends AbstractTest {
 
     public static final String INSERT_POST_COMMENT = "insert into post_comment (post_id, review, version, id) values (?, ?, ?, ?)";
 
-    public static final String INSERT_POST_DETAILS = "insert into post_details (id, created_by, version) values (?, ?, ?)";
+    public static final String INSERT_POST_DETAILS = "insert into post_details (post_id, created_by, version) values (?, ?, ?)";
 
     public static final String INSERT_DEPARTMENT = "insert into department (name, budget, id) values (?, ?, ?)";
 
@@ -118,6 +118,7 @@ public abstract class AbstractPhenomenaTest extends AbstractTest {
         final AtomicBoolean preventedByLocking = new AtomicBoolean();
 
         doInJDBC(aliceConnection -> {
+
             if (!aliceConnection.getMetaData().supportsTransactionIsolationLevel(isolationLevel)) {
                 LOGGER.info("Database {} doesn't support {}", dataSourceProvider().database(), isolationLevelName);
                 return;
@@ -446,7 +447,7 @@ public abstract class AbstractPhenomenaTest extends AbstractTest {
     }
 
     protected String selectPostDetailsAuthorSql() {
-        return "SELECT created_by FROM post_details WHERE id = 1";
+        return "SELECT created_by FROM post_details WHERE post_id = 1";
     }
 
     protected String updatePostTitleSql() {
@@ -458,7 +459,7 @@ public abstract class AbstractPhenomenaTest extends AbstractTest {
     }
 
     protected String updatePostDetailsAuthorParamSql() {
-        return "UPDATE post_details SET created_by = ? WHERE id = 1";
+        return "UPDATE post_details SET created_by = ? WHERE post_id = 1";
     }
 
     protected String countCommentsSql() {

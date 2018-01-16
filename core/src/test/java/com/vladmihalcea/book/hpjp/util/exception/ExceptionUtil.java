@@ -55,7 +55,8 @@ public interface ExceptionUtil {
 				failureMessage.contains( "timeout" ) ||
 				failureMessage.contains( "timed out" ) ||
 				failureMessage.contains( "time out" ) ||
-				failureMessage.contains( "closed connection" )
+				failureMessage.contains( "closed connection" ) ||
+				failureMessage.contains( "operation was killed")
 			) {
 				return true;
 			} else {
@@ -86,6 +87,7 @@ public interface ExceptionUtil {
 			 || cause.getMessage().toLowerCase().contains( "could not serialize access due to concurrent update" ) //PSQLException
 			 || cause.getMessage().toLowerCase().contains( "ould not serialize access due to read/write dependencies among transactions" ) //PSQLException
 			 || cause.getMessage().toLowerCase().contains( "snapshot isolation transaction aborted due to update conflict" ) //SQLServerException
+			 || cause.getMessage().toLowerCase().contains( "update conflict in" ) //NuoDBException
 			) {
 				return true;
 			} else {

@@ -11,7 +11,8 @@ public enum Database {
 	ORACLE(OracleDataSourceProvider.class),
 	MYSQL(MySQLDataSourceProvider.class),
 	SQLSERVER(SQLServerDataSourceProvider.class),
-	COCKROACHDB(CockroachDBDataSourceProvider.class);
+	COCKROACHDB(CockroachDBDataSourceProvider.class),
+	NUODB(NuoDBDataSourceProvider.class);
 
 	private Class<? extends DataSourceProvider> dataSourceProviderClass;
 
